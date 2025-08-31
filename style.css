@@ -418,27 +418,27 @@ section {
     height: 38px;
 }
 
-/* ÍCONES DE REDES SOCIAIS */
+/* ÍCONES DE REDES SOCIAIS (CÓDIGO CORRIGIDO E MELHORADO) */
 .social-links {
     margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre o texto e os ícones */
 }
 .social-links h4 {
-    margin-bottom: 15px;
+    margin: 0; /* Remove margens padrão do h4 */
     color: var(--cor-texto-secundario);
     font-size: 1.1rem;
 }
-.social-icon img {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
-}
-.social-icon:hover img {
-    transform: scale(1.1);
-}
 .social-icon {
-    display: inline-block;
-    margin: 0 10px;
+    width: 35px;
+    height: 35px;
+    transition: transform 0.2s ease;
 }
+.social-links a:hover .social-icon {
+    transform: scale(1.15);
+}
+
 
 /* ================================================= */
 /* ========= MEDIA QUERIES PARA RESPONSIVIDADE ========= */
@@ -530,6 +530,11 @@ section {
     .about-image { width: 80%; max-width: 300px; margin-bottom: 30px; }
     .about-content { width: 100%; }
     .about-content h2 { text-align: center; }
+    
+    /* Ícones Sociais em telas pequenas */
+    .social-links {
+        justify-content: center; /* Centraliza os ícones */
+    }
 
     /* Rodapé */
     .footer-col { text-align: center; }
