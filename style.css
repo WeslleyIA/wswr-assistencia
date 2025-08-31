@@ -1,0 +1,548 @@
+/* DESIGN TOKENS (Variáveis Globais) */
+:root {
+    --cor-fundo-escuro: #212529;
+    --cor-fundo-secao: #343a40;
+    --cor-primaria-verde: #28a745;
+    --cor-secundaria-vermelha: #dc3545;
+    --cor-texto-principal: #f8f9fa;
+    --cor-texto-secundario: #adb5bd;
+    --cor-borda: #495057;
+    --cor-azul-icone: #007bff;
+
+    --fonte-principal: 'Roboto', sans-serif;
+    --tamanho-base: 16px;
+    --espacamento-base: 8px;
+    
+    --raio-borda: 4px;
+}
+
+/* RESET E ESTILOS GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-texto-principal);
+    font-size: var(--tamanho-base);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.2;
+    margin-bottom: calc(var(--espacamento-base) * 2);
+    font-weight: 700;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: calc(var(--espacamento-base) * 5); }
+p { margin-bottom: calc(var(--espacamento-base) * 2); }
+
+section {
+    padding: calc(var(--espacamento-base) * 10) 0;
+}
+
+/* BOTÕES */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--raio-borda);
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.btn-primary {
+    background-color: var(--cor-primaria-verde);
+    color: white;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+.btn-large {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+}
+
+/* CABEÇALHO E NAVEGAÇÃO */
+.main-header {
+    background-color: rgba(33, 37, 41, 0.9);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid var(--cor-borda);
+}
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+}
+.logo-ws { color: var(--cor-primaria-verde); }
+.logo-wr { color: var(--cor-secundaria-vermelha); }
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--cor-texto-principal);
+    margin-left: 8px;
+}
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+.main-nav a {
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 50px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.main-nav a:hover {
+    background-color: var(--cor-primaria-verde);
+    color: white;
+    border-color: var(--cor-primaria-verde);
+}
+
+/* SEÇÃO HERO */
+.hero-section {
+    padding-top: 180px;
+    padding-bottom: 120px;
+    text-align: center;
+}
+.hero-section h1 { font-weight: 900; color: white; }
+.hero-section p {
+    font-size: 1.2rem;
+    color: var(--cor-texto-secundario);
+    max-width: 600px;
+    margin: 20px auto 30px;
+}
+.trust-signals {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: var(--cor-texto-secundario);
+}
+
+/* SEÇÃO DE SERVIÇOS PRINCIPAIS */
+.section-subtitle {
+    text-align: center;
+    color: var(--cor-texto-secundario);
+    margin-top: -30px;
+    margin-bottom: 50px;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.service-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.service-card {
+    position: relative;
+    border-radius: var(--raio-borda);
+    overflow: hidden; 
+    border: 1px solid var(--cor-borda);
+    transition: border-color 0.4s ease;
+    height: 100%;
+}
+.service-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    color: white;
+    transition: all 0.4s ease-in-out;
+}
+.card-content h3 { margin: 0; font-size: 1.5rem; }
+.card-description {
+    margin-top: 10px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+.service-card-link:hover .service-image { transform: scale(1.08); }
+.service-card-link:hover .card-content { background: linear-gradient(to top, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0) 100%); }
+.service-card-link:hover .card-description { max-height: 150px; opacity: 1; }
+.service-card.image-border:hover { border-color: var(--cor-primaria-verde); }
+
+
+/* ================================================= */
+/* ========= SEÇÃO SERVIÇOS DETALHADOS (COM IMAGENS) ========= */
+/* ================================================= */
+.detailed-services-section {
+    background-color: var(--cor-fundo-secao);
+}
+.service-category {
+    margin-bottom: 60px;
+    text-align: center; /* Centraliza o H3 da categoria */
+}
+.service-category:last-child {
+    margin-bottom: 0;
+}
+.service-category h3 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    color: var(--cor-texto-principal);
+    border-bottom: 2px solid var(--cor-primaria-verde);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.detailed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left; /* Alinha o texto dos cards à esquerda */
+}
+.service-detail-card {
+    background-color: var(--cor-fundo-escuro);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza conteúdo dentro do card */
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.service-detail-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cor-primaria-verde);
+}
+.service-detail-image {
+    width: 150px; /* Tamanho fixo para as imagens */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Imagem redonda */
+    margin-bottom: 20px;
+    border: 3px solid var(--cor-primaria-verde); /* Borda ao redor da imagem */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.service-detail-card:hover .service-detail-image {
+    transform: scale(1.05);
+}
+.service-detail-card h4 {
+    font-size: 1.3rem;
+    color: var(--cor-texto-principal);
+    margin-bottom: 15px;
+}
+.service-detail-card p {
+    color: var(--cor-texto-secundario);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* SEÇÃO DEPOIMENTOS (COM FOTOS DOS CLIENTES) */
+.testimonials-section { background-color: var(--cor-fundo-secao); }
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.testimonial-card {
+    background-color: var(--cor-fundo-escuro);
+    padding: 30px;
+    border-radius: var(--raio-borda);
+    border: 1px solid var(--cor-borda);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para empurrar a info do cliente para o final */
+}
+.testimonial-rating { font-size: 1.2rem; color: #ffc107; margin-bottom: 15px; }
+.testimonial-card blockquote {
+    font-style: italic;
+    color: var(--cor-texto-secundario);
+    border-left: 3px solid var(--cor-primaria-verde);
+    padding-left: 15px;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Permite que o blockquote ocupe o espaço necessário */
+}
+.client-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.client-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid var(--cor-primaria-verde);
+}
+.testimonial-card cite { 
+    font-weight: 700; 
+    font-style: normal; 
+    color: var(--cor-texto-principal);
+    font-size: 1.1rem;
+}
+
+/* SEÇÃO SOBRE NÓS */
+.about-section { background-color: var(--cor-fundo-escuro); }
+.about-section .container { display: flex; align-items: center; gap: 50px; }
+.about-image {
+    width: 40%;
+    max-width: 400px;
+    border-radius: var(--raio-borda);
+    object-fit: cover;
+    aspect-ratio: 16 / 10;
+}
+.about-content { width: 60%; }
+.about-content h2 { text-align: left; }
+
+/* SEÇÃO DE ORÇAMENTO E FORMULÁRIO */
+.quote-section { background-color: var(--cor-fundo-secao); }
+.quote-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form-group { display: flex; flex-direction: column; }
+.form-group label { margin-bottom: 5px; color: var(--cor-texto-secundario); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px;
+    border-radius: var(--raio-borda);
+    border: 1px solid var(--cor-borda);
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-texto-principal);
+    font-size: 1rem;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria-verde);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+}
+
+/* RODAPÉ */
+.main-footer {
+    background-color: var(--cor-fundo-secao);
+    padding-top: 60px;
+    border-top: 1px solid var(--cor-borda);
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.footer-col h3 {
+    color: white;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+.footer-col h3 .logo-text { font-size: 1.2rem; }
+.footer-col p { color: var(--cor-texto-secundario); }
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-texto-secundario);
+}
+
+/* BOTÃO FLUTUANTE DO WHATSAPP */
+.whatsapp-float {
+    position: fixed;
+    width: 70px; 
+    height: 70px;
+    bottom: 40px; 
+    right: 40px; 
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    z-index: 1010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 38px; 
+    height: 38px;
+}
+
+/* ÍCONES DE REDES SOCIAIS */
+.social-links {
+    margin-top: 30px;
+}
+.social-links h4 {
+    margin-bottom: 15px;
+    color: var(--cor-texto-secundario);
+    font-size: 1.1rem;
+}
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+.social-icon:hover img {
+    transform: scale(1.1);
+}
+.social-icon {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+/* ================================================= */
+/* ========= MEDIA QUERIES PARA RESPONSIVIDADE ========= */
+/* ================================================= */
+
+@media (max-width: 768px) {
+    /* Ajustes Gerais */
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 40px; }
+    section { padding: 60px 0; }
+    .btn-large { padding: 12px 25px; font-size: 1rem; }
+    .section-subtitle { margin-bottom: 30px; }
+
+    /* Cabeçalho */
+    .main-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .main-nav { 
+        width: 100%;
+        text-align: center;
+    }
+    .main-nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+    .main-nav a {
+        padding: 10px 15px;
+        border-radius: 50px;
+        border: 1px solid var(--cor-borda);
+        background-color: transparent;
+        font-weight: 700;
+        width: auto;
+        margin: 0;
+    }
+    .main-nav a:hover {
+        background-color: var(--cor-primaria-verde);
+        color: white;
+        border-color: var(--cor-primaria-verde);
+    }
+    .main-header .btn {
+        width: 80%;
+        max-width: 300px;
+        margin: 10px auto 0;
+    }
+    .hero-section {
+        padding-top: 250px;
+        padding-bottom: 80px;
+    }
+    .hero-section p { font-size: 1rem; }
+    .trust-signals {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Grids (Serviços, Detalhes, Depoimentos, Rodapé) */
+    .services-grid,
+    .detailed-grid,
+    .testimonials-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    /* Serviços Principais */
+    .service-image {
+        height: 250px;
+    }
+    .card-content h3 { font-size: 1.3rem; }
+
+    /* Serviços Detalhados */
+    .service-category h3 { font-size: 1.6rem; margin-bottom: 30px; }
+    .service-detail-card { padding: 25px; }
+    .service-detail-image { width: 120px; height: 120px; margin-bottom: 15px; }
+    .service-detail-card h4 { font-size: 1.2rem; margin-bottom: 10px; }
+    .service-detail-card p { font-size: 0.95rem; }
+
+    /* Depoimentos */
+    .testimonial-card { padding: 25px; }
+    .testimonial-rating { margin-bottom: 10px; }
+    .client-photo { width: 50px; height: 50px; margin-right: 10px; }
+    .testimonial-card cite { font-size: 1rem; }
+
+    /* Sobre Nós */
+    .about-section .container { flex-direction: column; text-align: center; }
+    .about-image { width: 80%; max-width: 300px; margin-bottom: 30px; }
+    .about-content { width: 100%; }
+    .about-content h2 { text-align: center; }
+
+    /* Rodapé */
+    .footer-col { text-align: center; }
+    .footer-col h3 { justify-content: center; }
+}
+
+/* Opcional: Ajustes para telas um pouco maiores que celular, mas menores que desktop */
+@media (min-width: 769px) and (max-width: 992px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-section .container { flex-direction: column; text-align: center; }
+    .about-image { margin-bottom: 30px; }
+    .about-content { width: 100%; }
+    .about-content h2 { text-align: center; }
+}
