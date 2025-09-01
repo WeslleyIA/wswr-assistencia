@@ -362,6 +362,30 @@ section {
     box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
 }
 
+/* NOVA SEÇÃO DE LOCALIZAÇÃO (MAPA GRANDE) */
+.location-section {
+    background-color: var(--cor-fundo-escuro);
+    padding: calc(var(--espacamento-base) * 10) 0;
+}
+.location-section h2 {
+    color: var(--cor-texto-principal);
+    margin-bottom: calc(var(--espacamento-base) * 3); /* Aumentei a margem inferior do H2 */
+}
+.location-section .section-subtitle {
+    margin-bottom: calc(var(--espacamento-base) * 6); /* Aumentei bastante aqui para separar do mapa */
+}
+.map-container {
+    border-radius: var(--raio-borda);
+    overflow: hidden; /* Garante que as bordas do iframe sejam arredondadas */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.map-container iframe {
+    width: 100%;
+    height: 450px; /* Altura padrão para o mapa */
+    border: 0;
+}
+
+
 /* RODAPÉ */
 .main-footer {
     background-color: var(--cor-fundo-secao);
@@ -370,7 +394,7 @@ section {
 }
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Voltou para 3 colunas */
     gap: 30px;
     margin-bottom: 40px;
 }
@@ -389,6 +413,7 @@ section {
     border-top: 1px solid var(--cor-borda);
     color: var(--cor-texto-secundario);
 }
+
 
 /* BOTÃO FLUTUANTE DO WHATSAPP */
 .whatsapp-float {
@@ -501,7 +526,7 @@ section {
     .services-grid,
     .detailed-grid,
     .testimonials-grid,
-    .footer-grid {
+    .footer-grid { /* O rodapé agora é 1 coluna em mobile */
         grid-template-columns: 1fr;
         gap: 25px;
     }
@@ -539,13 +564,21 @@ section {
     /* Rodapé */
     .footer-col { text-align: center; }
     .footer-col h3 { justify-content: center; }
+
+    /* Mapa em telas pequenas */
+    .map-container iframe {
+        height: 300px; /* Altura um pouco menor em mobile */
+    }
 }
 
 /* Opcional: Ajustes para telas um pouco maiores que celular, mas menores que desktop */
 @media (min-width: 769px) and (max-width: 992px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { 
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas para tablets */
+        gap: 40px;
+     }
     .about-section .container { flex-direction: column; text-align: center; }
     .about-image { margin-bottom: 30px; }
     .about-content { width: 100%; }
