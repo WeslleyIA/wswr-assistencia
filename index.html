@@ -14,50 +14,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <!-- Estilos para o Mapa -->
-    <style>
-      #location .map-container {
-        width: 100%;
-        height: 500px;
-      }
-      gmpx-store-locator {
-        width: 100%;
-        height: 100%;
-        --gmpx-color-primary: #1967d2;
-        --gmpx-font-family-base: "Roboto", sans-serif;
-      }
-    </style>
-
-    <!-- Configuração do Mapa com as chaves corretas -->
-    <script>
-      const CONFIGURATION = {
-        "locations": [
-          {"title":"WSWR Assistência","address1":"R. Padre Roque, 520B","address2":"Mogi Mirim, SP, Brazil","coords":{"lat":-22.4370419,"lng":-46.9616908},"placeId":"ChIJb0H3tGT3yJQRwGE0Z-yAsng"}
-        ],
-        "mapOptions": {
-          "center":{"lat":-22.4370419,"lng":-46.9616908},
-          "fullscreenControl":true,
-          "mapTypeControl":false,
-          "streetViewControl":false,
-          "zoom":16,
-          "zoomControl":true,
-          "maxZoom":20,
-          "mapId":"55948d2e7190b1d7" /* ID do Mapa inserida aqui */
-        },
-        "mapsApiKey": "AIzaSyBLox5vdFw_aP7DbwB5RerPCUeE8qQDDTA",
-        "capabilities": {"input":true,"autocomplete":true,"directions":true,"distanceMatrix":true,"details":true,"actions":true}
-      };
-    </script>
-    <script type="module">
-      document.addEventListener('DOMContentLoaded', async () => {
-        if (document.querySelector('gmpx-store-locator')) {
-            await customElements.whenDefined('gmpx-store-locator');
-            const locator = document.querySelector('gmpx-store-locator');
-            locator.configureFromQuickBuilder(CONFIGURATION);
-        }
-      });
-    </script>
 </head>
 <body>
 
@@ -125,20 +81,85 @@
                 </div>
             </div>
         </section>
+
+        <section id="detailed-services" class="detailed-services-section">
+            <div class="container">
+                <h2>Serviços Detalhados</h2>
+                <p class="section-subtitle">Soluções completas para cada necessidade do seu aparelho.</p>
+
+                <div class="service-category">
+                    <h3>Para seu Celular</h3>
+                    <div class="detailed-grid">
+                        <div class="service-detail-card">
+                            <img src="imagens/troca-tela.jpg" alt="Troca de Tela" class="service-detail-image">
+                            <h4>Troca de Tela Profissional</h4>
+                            <p>Seu aparelho caiu e a tela quebrou? Realizamos a substituição por componentes de alta qualidade, garantindo cores vibrantes e sensibilidade ao toque originais.</p>
+                        </div>
+                        <div class="service-detail-card">
+                            <img src="imagens/troca-bateria.jpg" alt="Troca de Bateria" class="service-detail-image">
+                            <h4>Troca de Bateria</h4>
+                            <p>Seu celular descarrega rápido ou não segura mais a carga? Substituímos por baterias novas de alta qualidade, restaurando a autonomia para você usar o dia todo.</p>
+                        </div>
+                        <div class="service-detail-card">
+                            <img src="imagens/reparo-conector.jpg" alt="Reparo de Conector de Carga" class="service-detail-image">
+                            <h4>Reparo de Conector de Carga</h4>
+                            <p>Problemas para carregar? Oferecemos reparos precisos no conector de carga para que seu aparelho volte a carregar corretamente e com segurança.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-category">
+                    <h3>Para seu Computador</h3>
+                    <div class="detailed-grid">
+                        <div class="service-detail-card">
+                            <img src="imagens/formatacao-so.jpg" alt="Formatação e Instalação de SO" class="service-detail-image">
+                            <h4>Formatação e Instalação de SO</h4>
+                            <p>Seu computador está lento, travando ou apresentando erros? Realizamos a formatação completa e a instalação limpa de sistemas (Windows e Linux), deixando seu PC rápido e seguro para o uso diário.</p>
+                        </div>
+                        <div class="service-detail-card">
+                            <img src="imagens/instalacao-apps.jpg" alt="Instalação de Aplicativos" class="service-detail-image">
+                            <h4>Instalação de Aplicativos</h4>
+                            <p>Precisa de programas essenciais para trabalho ou estudo? Instalamos os aplicativos que você precisa, como pacotes de produtividade (Microsoft Office), editores de vídeo e outros softwares.</p>
+                        </div>
+                        <div class="service-detail-card">
+                            <img src="imagens/montagem-pc.jpg" alt="Montagem de PCs Personalizados" class="service-detail-image">
+                            <h4>Montagem de PCs Personalizados</h4>
+                            <p>Montamos o computador ideal para você, desde máquinas para trabalho até PCs high-end para gamers, com foco em performance e no seu orçamento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- Outras seções do seu site (detailed-services, testimonials, etc.) continuam aqui... -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <script src="https://elfsightcdn.com/platform.js" async></script>
+                <div class="elfsight-app-e1a4296c-8447-43a5-ac8f-29de378ccbfe" data-elfsight-app-lazy></div>
+            </div>
+        </section>
 
         <section id="about" class="about-section">
-             <div class="container">
+            <div class="container">
                  <img src="imagens/sobre-nos.jpg" alt="Equipe da WSWR Assistência realizando reparos em dispositivos." class="about-image">
                 <div class="about-content">
                     <h2>Quem Somos</h2>
                     <p>A WSWR Assistência nasceu da paixão por tecnologia e da vontade de oferecer um serviço de reparo honesto, transparente e com a agilidade que só um negócio local pode proporcionar. Diferente das grandes redes, aqui você fala diretamente com o técnico responsável, garantindo um atendimento pessoal e focado na melhor solução para você.</p>
                     <p>Todos os nossos reparos são realizados presencialmente em nossa loja, garantindo total segurança e transparência no manuseio do seu equipamento. Com formação em Técnico em Eletrônica e experiência em lojas especializadas, a WSWR Assistência foca em devolver a vida ao seu equipamento com peças de qualidade e um serviço que você pode confiar.</p>
+                    
+                    <div class="social-links">
+                        <h4>Siga-nos nas redes:</h4>
+                        <a href="https://www.instagram.com/wswrassistencia/" target="_blank" rel="noopener noreferrer" aria-label="Nosso Instagram">
+                            <img src="imagens/instagram.svg" alt="Instagram" class="social-icon">
+                        </a>
+                        <a href="https://www.tiktok.com/@wswr.assistncia.t" target="_blank" rel="noopener noreferrer" aria-label="Nosso TikTok">
+                            <img src="imagens/tiktok.svg" alt="TikTok" class="social-icon">
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </section>
-
+        
         <section id="quote" class="quote-section">
             <div class="container">
                 <h2>Peça seu Orçamento Online</h2>
@@ -172,6 +193,7 @@
                 </form>
             </div>
         </section>
+
     </main>
 
     <section id="location" class="location-section">
@@ -179,12 +201,18 @@
             <h2>Onde Estamos</h2>
             <p class="section-subtitle">Atendemos em Mogi Mirim e região. Visite-nos ou entre em contato!</p>
             <div class="map-container">
-                <gmpx-api-loader key="AIzaSyBLox5vdFw_aP7DbwB5RerPCUeE8qQDDTA" solution-channel="GMP_QB_locatorplus_v11_c"></gmpx-api-loader>
-                <gmpx-store-locator map-id="55948d2e7190b1d7"></gmpx-store-locator>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.136586071536!2d-46.95879568444453!3d-22.42411892305016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8f8073507117f%3A0x34293e50e051794b!2sR.%20Padre%20Roque%2C%20520B%20-%20Centro%2C%20Mogi%20Mirim%20-%20SP%2C%2013800-033!5e0!3m2!1spt-BR!2sbr!4v1664302653335!5m2!1spt-BR!2sbr"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
-    
     <footer class="main-footer" id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -192,6 +220,9 @@
                     <h3><span class="logo-ws">WS</span><span class="logo-wr">WR</span><span class="logo-text"> Assistência</span></h3>
                     <p>Sua solução completa para celulares e computadores.</p>
                     <p>CNPJ: 62.205.283/0001-65</p>
+                    <p style="font-size: 12px; color: #ccc; margin-top: 10px;">
+    A WSWR Assistência é um serviço de reparo independente e não possui afiliação direta com as marcas mencionadas neste site. Todos os nomes de marcas e marcas registradas como Apple, Samsung, Motorola, Microsoft, entre outras, são propriedade de seus respectivos donos.
+</p>
                 </div>
                 <div class="footer-col">
                     <h3>Contato</h3>
@@ -214,20 +245,31 @@
     <a href="https://wa.me/5519971189205" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
         <img src="imagens/whatsapp-icon.svg" alt="WhatsApp">
     </a>
-    
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js"></script>
+
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Pega os valores dos campos do formulário
             const deviceType = document.getElementById('device-type').value;
             const brand = document.getElementById('brand').value;
             const problem = document.getElementById('problem').value;
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value; 
+
+            // Número de telefone para o qual a mensagem será enviada (formato internacional)
             const phoneNumber = '5519971189205';
+
+            // Monta a mensagem
             const message = `Olá! Gostaria de solicitar um orçamento.\n\n*Dispositivo:* ${deviceType}\n*Marca/Modelo:* ${brand}\n*Problema:* ${problem}\n\n*Meu Nome:* ${name}\n*Email para Contato:* ${email}`;
+
+            // Codifica a mensagem para ser usada em uma URL
             const encodedMessage = encodeURIComponent(message);
+
+            // Cria o link do WhatsApp
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Abre o link em uma nova aba
             window.open(whatsappURL, '_blank');
         });
     </script>
