@@ -14,7 +14,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-</head>
+
+    <style>
+      .map-locator-container {
+        width: 100%;
+        height: 650px; /* Adjust height as needed */
+        position: relative;
+      }
+      gmpx-store-locator {
+        width: 100%;
+        height: 100%;
+        /* These parameters customize the appearance of Locator Plus. */
+        --gmpx-color-surface: #fff;
+        --gmpx-color-on-surface: #212121;
+        --gmpx-color-on-surface-variant: #757575;
+        --gmpx-color-primary: #1967d2;
+        --gmpx-color-outline: #e0e0e0;
+        --gmpx-fixed-panel-width-row-layout: 28.5em;
+        --gmpx-fixed-panel-height-column-layout: 65%;
+        --gmpx-font-family-base: "Roboto", sans-serif;
+        --gmpx-font-family-headings: "Roboto", sans-serif;
+        --gmpx-font-size-base: 0.875rem;
+        --gmpx-hours-color-open: #188038;
+        --gmpx-hours-color-closed: #d50000;
+        --gmpx-rating-color: #ffb300;
+        --gmpx-rating-color-empty: #e0e0e0;
+      }
+    </style>
+    </head>
 <body>
 
     <header class="main-header">
@@ -65,7 +92,6 @@
                             <img src="imagens/computador.jpg" alt="Manutenção de Computadores" class="service-image">
                             <div class="card-content">
                                 <h3>Manutenção de Computadores</h3>
-                                <!-- ALTERADO: Removido "Otimização de sistema" -->
                                 <p class="card-description">Formatação e reinstalação de sistema, upgrade de SSD e memória RAM para deixar seu notebook ou desktop com desempenho de novo.</p>
                             </div>
                         </div>
@@ -115,13 +141,11 @@
                         <div class="service-detail-card">
                             <img src="imagens/formatacao-so.jpg" alt="Formatação e Instalação de SO" class="service-detail-image">
                             <h4>Formatação e Instalação de SO</h4>
-                            <!-- ALTERADO: Removido "vírus" e "otimizado" -->
                             <p>Seu computador está lento, travando ou apresentando erros? Realizamos a formatação completa e a instalação limpa de sistemas (Windows e Linux), deixando seu PC rápido e seguro para o uso diário.</p>
                         </div>
                         <div class="service-detail-card">
                             <img src="imagens/instalacao-apps.jpg" alt="Instalação de Aplicativos" class="service-detail-image">
                             <h4>Instalação de Aplicativos</h4>
-                            <!-- ALTERADO: Removido "ferramentas de segurança" -->
                             <p>Precisa de programas essenciais para trabalho ou estudo? Instalamos os aplicativos que você precisa, como pacotes de produtividade (Microsoft Office), editores de vídeo e outros softwares.</p>
                         </div>
                         <div class="service-detail-card">
@@ -147,7 +171,6 @@
                 <div class="about-content">
                     <h2>Quem Somos</h2>
                     <p>A WSWR Assistência nasceu da paixão por tecnologia e da vontade de oferecer um serviço de reparo honesto, transparente e com a agilidade que só um negócio local pode proporcionar. Diferente das grandes redes, aqui você fala diretamente com o técnico responsável, garantindo um atendimento pessoal e focado na melhor solução para você.</p>
-                    <!-- ADICIONADO: Reforço de serviço local/físico -->
                     <p>Todos os nossos reparos são realizados presencialmente em nossa loja, garantindo total segurança e transparência no manuseio do seu equipamento. Com formação em Técnico em Eletrônica e experiência em lojas especializadas, a WSWR Assistência foca em devolver a vida ao seu equipamento com peças de qualidade e um serviço que você pode confiar.</p>
                     
                     <div class="social-links">
@@ -197,27 +220,20 @@
                 </form>
             </div>
         </section>
-
     </main>
 
     <section id="location" class="location-section">
         <div class="container">
             <h2>Onde Estamos</h2>
             <p class="section-subtitle">Atendemos em Mogi Mirim e região. Visite-nos ou entre em contato!</p>
-            <div class="map-container">
-                <!-- ALTERADO: Iframe do Google Maps corrigido -->
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.136586071536!2d-46.95879568444453!3d-22.42411892305016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8f8073507117f%3A0x34293e50e051794b!2sR.%20Padre%20Roque%2C%20520B%20-%20Centro%2C%20Mogi%20Mirim%20-%20SP%2C%2013800-033!5e0!3m2!1spt-BR!2sbr!4v1664302653335!5m2!1spt-BR!2sbr"
-                    width="100%" 
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            
+            <div class="map-locator-container">
+                <gmpx-api-loader key="YOUR_API_KEY_HERE" solution-channel="GMP_QB_locatorplus_v11_cABD"></gmpx-api-loader>
+                <gmpx-store-locator map-id="DEMO_MAP_ID"></gmpx-store-locator>
             </div>
-        </div>
+            </div>
     </section>
+
     <footer class="main-footer" id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -226,14 +242,14 @@
                     <p>Sua solução completa para celulares e computadores.</p>
                     <p>CNPJ: 62.205.283/0001-65</p>
                     <p style="font-size: 12px; color: #ccc; margin-top: 10px;">
-    A WSWR Assistência é um serviço de reparo independente e não possui afiliação direta com as marcas mencionadas neste site. Todos os nomes de marcas e marcas registradas como Apple, Samsung, Motorola, Microsoft, entre outras, são propriedade de seus respectivos donos.
-</p>
+                        A WSWR Assistência é um serviço de reparo independente e não possui afiliação direta com as marcas mencionadas neste site. Todos os nomes de marcas e marcas registradas como Apple, Samsung, Motorola, Microsoft, entre outras, são propriedade de seus respectivos donos.
+                    </p>
                 </div>
                 <div class="footer-col">
                     <h3>Contato</h3>
                     <p>(19) 97118-9205</p>
                     <p>wswrassistencia@gmail.com</p>
-                    <p>R. Padre Roque, 520B, Centro, Mogi Mirim, SP</p>
+                    <p>R. Padre Roque, 520B - Centro, Mogi Mirim</p>
                 </div>
                 <div class="footer-col">
                     <h3>Horário de Funcionamento</h3>
@@ -251,6 +267,32 @@
         <img src="imagens/whatsapp-icon.svg" alt="WhatsApp">
     </a>
 
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js"></script>
+    <script>
+        const CONFIGURATION = {
+          "locations": [
+            {"title":"WSWR Assistência | Conserto de Celular e PC em Mogi Mirim","address1":"R. Padre Roque, 520B","address2":"Mogi Mirim, SP, Brazil","coords":{"lat":-22.4370419,"lng":-46.9616908},"placeId":"ChIJb0H3tGT3yJQRwGE0Z-yAsng"}
+          ],
+          "mapOptions": {
+            "center": {"lat": -22.4370419, "lng": -46.9616908},
+            "fullscreenControl": true,
+            "mapTypeControl": false,
+            "streetViewControl": false,
+            "zoom": 16,
+            "zoomControl": true,
+            "maxZoom": 20,
+            "mapId": ""
+           },
+          "mapsApiKey": "YOUR_API_KEY_HERE",
+          "capabilities": {"input":true,"autocomplete":true,"directions":true,"distanceMatrix":true,"details":true,"actions":true}
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+          await customElements.whenDefined('gmpx-store-locator');
+          const locator = document.querySelector('gmpx-store-locator');
+          locator.configureFromQuickBuilder(CONFIGURATION);
+        });
+    </script>
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
