@@ -16,18 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-      html,
-      body {
-        /* A altura 100% foi removida para não interferir no layout existente */
-        margin: 0;
-      }
-
       gmpx-store-locator {
         width: 100%;
-        /* Altura fixa para se ajustar melhor à seção */
-        height: 550px; 
+        height: 550px;
         
-        /* Estes parâmetros personalizam a aparência do Locator Plus. */
         --gmpx-color-surface: #fff;
         --gmpx-color-on-surface: #212121;
         --gmpx-color-on-surface-variant: #757575;
@@ -50,7 +42,8 @@
         "locations": [
           {"title":"WSWR Assistência | Conserto de Celular e PC em Mogi Mirim","address1":"R. Padre Roque, 520B","address2":"Mogi Mirim, SP, Brazil","coords":{"lat":-22.4370419,"lng":-46.9616908},"placeId":"ChIJb0H3tGT3yJQRwGE0Z-yAsng"}
         ],
-        "mapOptions": {"center":{"lat":-22.4370419,"lng":-46.9616908},"fullscreenControl":true,"mapTypeControl":false,"streetViewControl":false,"zoom":15,"zoomControl":true,"maxZoom":17,"mapId":""},
+        // A propriedade "mapId" foi removida daqui
+        "mapOptions": {"center":{"lat":-22.4370419,"lng":-46.9616908},"fullscreenControl":true,"mapTypeControl":false,"streetViewControl":false,"zoom":15,"zoomControl":true,"maxZoom":17},
         "mapsApiKey": "AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY",
         "capabilities": {"input":false,"autocomplete":false,"directions":false,"distanceMatrix":false,"details":false,"actions":false}
       };
@@ -241,7 +234,6 @@
                 </form>
             </div>
         </section>
-
     </main>
 
     <section id="location" class="location-section">
@@ -251,7 +243,8 @@
             
             <gmpx-api-loader key="AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY" solution-channel="GMP_QB_locatorplus_v11_c"></gmpx-api-loader>
             <gmpx-store-locator></gmpx-store-locator> 
-            </div>
+            
+        </div>
     </section>
     
     <footer class="main-footer" id="contact">
@@ -289,28 +282,16 @@
 
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
-
-            // Pega os valores dos campos do formulário
+            event.preventDefault();
             const deviceType = document.getElementById('device-type').value;
             const brand = document.getElementById('brand').value;
             const problem = document.getElementById('problem').value;
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value; 
-
-            // Número de telefone para o qual a mensagem será enviada (formato internacional)
             const phoneNumber = '5519971189205';
-
-            // Monta a mensagem
             const message = `Olá! Gostaria de solicitar um orçamento.\n\n*Dispositivo:* ${deviceType}\n*Marca/Modelo:* ${brand}\n*Problema:* ${problem}\n\n*Meu Nome:* ${name}\n*Email para Contato:* ${email}`;
-
-            // Codifica a mensagem para ser usada em uma URL
             const encodedMessage = encodeURIComponent(message);
-
-            // Cria o link do WhatsApp
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-            // Abre o link em uma nova aba
             window.open(whatsappURL, '_blank');
         });
     </script>
