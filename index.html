@@ -200,68 +200,10 @@
         <div class="container">
             <h2>Onde Estamos</h2>
             <p class="section-subtitle">Atendemos em Mogi Mirim e região. Visite-nos ou entre em contato!</p>
-            <div class="map-container" style="height:450px;">
-  <style>
-    gmpx-store-locator {
-      width: 100%;
-      height: 100%;
-      --gmpx-color-surface: #fff;
-      --gmpx-color-on-surface: #212121;
-      --gmpx-color-on-surface-variant: #757575;
-      --gmpx-color-primary: #1967d2;
-      --gmpx-color-outline: #e0e0e0;
-      --gmpx-fixed-panel-width-row-layout: 28.5em;
-      --gmpx-fixed-panel-height-column-layout: 65%;
-      --gmpx-font-family-base: "Roboto", sans-serif;
-      --gmpx-font-family-headings: "Roboto", sans-serif;
-      --gmpx-font-size-base: 0.875rem;
-      --gmpx-hours-color-open: #188038;
-      --gmpx-hours-color-closed: #d50000;
-      --gmpx-rating-color: #ffb300;
-      --gmpx-rating-color-empty: #e0e0e0;
-    }
-  </style>
-
-  <script>
-    const CONFIGURATION = {
-      "locations": [
-        {
-          "title":"WSWR Assistência | Conserto de Celular e PC em Mogi Mirim",
-          "address1":"R. Padre Roque, 520B",
-          "address2":"Mogi Mirim, SP, Brazil",
-          "coords":{"lat":-22.43705,"lng":-46.96172},
-          "placeId":"ChIJb0H3tGT3yJQRwGE0Z-yAsng"
-        }
-      ],
-      "mapOptions": {
-        "center":{"lat":-22.43705,"lng":-46.96172},
-        "fullscreenControl":true,
-        "mapTypeControl":false,
-        "streetViewControl":false,
-        "zoom":18,
-        "zoomControl":true,
-        "maxZoom":20,
-        "mapId":""
-      },
-      "mapsApiKey": "AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY",
-      "capabilities": {"input":false,"autocomplete":false,"directions":false,"distanceMatrix":false,"details":false,"actions":false}
-    };
-  </script>
-
-  <script type="module">
-    document.addEventListener('DOMContentLoaded', async () => {
-      await customElements.whenDefined('gmpx-store-locator');
-      const locator = document.querySelector('gmpx-store-locator');
-      locator.configureFromQuickBuilder(CONFIGURATION);
-    });
-  </script>
-
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js"></script>
-  <gmpx-api-loader key="AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY" solution-channel="GMP_QB_locatorplus_v11_c"></gmpx-api-loader>
-  <gmpx-store-locator map-id="DEMO_MAP_ID"></gmpx-store-locator>
-</div>
-
-
+            <div class="map-container">
+                <!-- O mapa do Google será carregado aqui -->
+                <div id="map" style="height: 450px; width: 100%;"></div>
+            </div>
         </div>
     </section>
     
@@ -299,6 +241,7 @@
     </a>
 
     <script>
+        // Script do formulário de contato para enviar mensagem via WhatsApp
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
 
@@ -309,7 +252,7 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value; 
 
-            // Número de telefone para o qual a mensagem será enviada (formato internacional)
+            // Número de telefone para o qual a mensagem será enviada
             const phoneNumber = '5519971189205';
 
             // Monta a mensagem
@@ -324,7 +267,62 @@
             // Abre o link em uma nova aba
             window.open(whatsappURL, '_blank');
         });
+
+        // Script para inicializar o novo mapa do Google
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -22.4330, lng: -46.9547 }, // Um centro inicial aproximado, será ajustado abaixo
+                zoom: 17,
+            });
+
+            const request = {
+                placeId: "ChIJb0H3tGT3yJQRwGE0Z-yAsng", // Seu Place ID fornecido
+                fields: ["name", "formatted_address", "place_id", "geometry"],
+            };
+
+            const infowindow = new google.maps.InfoWindow();
+            const service = new google.maps.places.PlacesService(map);
+
+            service.getDetails(request, (place, status) => {
+                if (
+                    status === google.maps.places.PlacesServiceStatus.OK &&
+                    place &&
+                    place.geometry &&
+                    place.geometry.location
+                ) {
+                    // Centraliza o mapa na localização exata do Place ID
+                    map.setCenter(place.geometry.location); 
+                    
+                    const marker = new google.maps.Marker({
+                        map,
+                        position: place.geometry.location,
+                        title: place.name,
+                    });
+
+                    // Adiciona o evento de clique para mostrar informações
+                    google.maps.event.addListener(marker, "click", () => {
+                        const content = document.createElement("div");
+
+                        const nameElement = document.createElement("h4"); // Nome da loja
+                        nameElement.textContent = place.name;
+                        content.appendChild(nameElement);
+
+                        const placeAddressElement = document.createElement("p"); // Endereço
+                        placeAddressElement.textContent = place.formatted_address;
+                        content.appendChild(placeAddressElement);
+
+                        infowindow.setContent(content);
+                        infowindow.setOptions({ ariaLabel: place.name });
+                        infowindow.open(map, marker);
+                    });
+                }
+            });
+        }
     </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY&callback=initMap&libraries=places&v=weekly"
+      defer
+    ></script>
 
 </body>
 </html>
