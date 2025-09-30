@@ -193,17 +193,77 @@
                 </form>
             </div>
         </section>
+
     </main>
 
-    <!-- INÍCIO DA SEÇÃO DO MAPA ATUALIZADA -->
     <section id="location" class="location-section">
         <div class="container">
             <h2>Onde Estamos</h2>
             <p class="section-subtitle">Atendemos em Mogi Mirim e região. Visite-nos ou entre em contato!</p>
-            <div id="map" style="width: 100%; height: 450px; border:0;"></div>
+            <div class="map-container" style="height:450px;">
+  <style>
+    gmpx-store-locator {
+      width: 100%;
+      height: 100%;
+      --gmpx-color-surface: #fff;
+      --gmpx-color-on-surface: #212121;
+      --gmpx-color-on-surface-variant: #757575;
+      --gmpx-color-primary: #1967d2;
+      --gmpx-color-outline: #e0e0e0;
+      --gmpx-fixed-panel-width-row-layout: 28.5em;
+      --gmpx-fixed-panel-height-column-layout: 65%;
+      --gmpx-font-family-base: "Roboto", sans-serif;
+      --gmpx-font-family-headings: "Roboto", sans-serif;
+      --gmpx-font-size-base: 0.875rem;
+      --gmpx-hours-color-open: #188038;
+      --gmpx-hours-color-closed: #d50000;
+      --gmpx-rating-color: #ffb300;
+      --gmpx-rating-color-empty: #e0e0e0;
+    }
+  </style>
+
+  <script>
+    const CONFIGURATION = {
+      "locations": [
+        {
+          "title":"WSWR Assistência | Conserto de Celular e PC em Mogi Mirim",
+          "address1":"R. Padre Roque, 520B",
+          "address2":"Mogi Mirim, SP, Brazil",
+          "coords":{"lat":-22.43705,"lng":-46.96172},
+          "placeId":"ChIJb0H3tGT3yJQRwGE0Z-yAsng"
+        }
+      ],
+      "mapOptions": {
+        "center":{"lat":-22.43705,"lng":-46.96172},
+        "fullscreenControl":true,
+        "mapTypeControl":false,
+        "streetViewControl":false,
+        "zoom":18,
+        "zoomControl":true,
+        "maxZoom":20,
+        "mapId":""
+      },
+      "mapsApiKey": "AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY",
+      "capabilities": {"input":false,"autocomplete":false,"directions":false,"distanceMatrix":false,"details":false,"actions":false}
+    };
+  </script>
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', async () => {
+      await customElements.whenDefined('gmpx-store-locator');
+      const locator = document.querySelector('gmpx-store-locator');
+      locator.configureFromQuickBuilder(CONFIGURATION);
+    });
+  </script>
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js"></script>
+  <gmpx-api-loader key="AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY" solution-channel="GMP_QB_locatorplus_v11_c"></gmpx-api-loader>
+  <gmpx-store-locator map-id="DEMO_MAP_ID"></gmpx-store-locator>
+</div>
+
+
         </div>
     </section>
-    <!-- FIM DA SEÇÃO DO MAPA -->
     
     <footer class="main-footer" id="contact">
         <div class="container">
@@ -213,8 +273,8 @@
                     <p>Sua solução completa para celulares e computadores.</p>
                     <p>CNPJ: 62.205.283/0001-65</p>
                     <p style="font-size: 12px; color: #ccc; margin-top: 10px;">
-                        A WSWR Assistência é um serviço de reparo independente e não possui afiliação direta com as marcas mencionadas neste site. Todos os nomes de marcas e marcas registradas como Apple, Samsung, Motorola, Microsoft, entre outras, são propriedade de seus respectivos donos.
-                    </p>
+    A WSWR Assistência é um serviço de reparo independente e não possui afiliação direta com as marcas mencionadas neste site. Todos os nomes de marcas e marcas registradas como Apple, Samsung, Motorola, Microsoft, entre outras, são propriedade de seus respectivos donos.
+</p>
                 </div>
                 <div class="footer-col">
                     <h3>Contato</h3>
@@ -238,48 +298,30 @@
         <img src="imagens/whatsapp-icon.svg" alt="WhatsApp">
     </a>
 
-    <!-- SCRIPTS DO GOOGLE MAPS -->
-    <script>
-        function initMap() {
-            const localizacao = { lat: -22.4343, lng: -46.9546 };
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 17,
-                center: localizacao,
-            });
-            
-            // !! IMPORTANTE !!
-            // Altere "seu-icone-aqui.png" para o nome do seu arquivo de imagem
-            const iconePersonalizado = "imagens/Design sem nome.png"; 
-
-            const marker = new google.maps.Marker({
-                position: localizacao,
-                map: map,
-                icon: iconePersonalizado,
-                title: "WSWR Assistência"
-            });
-        }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9_TzAE1BP8j_q7pihG8mGy2s6A7cxPvY&callback=initMap">
-    </script>
-    <!-- FIM DOS SCRIPTS DO MAPA -->
-
-
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Impede o envio padrão do formulário
 
+            // Pega os valores dos campos do formulário
             const deviceType = document.getElementById('device-type').value;
             const brand = document.getElementById('brand').value;
             const problem = document.getElementById('problem').value;
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value; 
 
+            // Número de telefone para o qual a mensagem será enviada (formato internacional)
             const phoneNumber = '5519971189205';
+
+            // Monta a mensagem
             const message = `Olá! Gostaria de solicitar um orçamento.\n\n*Dispositivo:* ${deviceType}\n*Marca/Modelo:* ${brand}\n*Problema:* ${problem}\n\n*Meu Nome:* ${name}\n*Email para Contato:* ${email}`;
+
+            // Codifica a mensagem para ser usada em uma URL
             const encodedMessage = encodeURIComponent(message);
+
+            // Cria o link do WhatsApp
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
+            // Abre o link em uma nova aba
             window.open(whatsappURL, '_blank');
         });
     </script>
