@@ -41,6 +41,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -49,6 +51,8 @@ body {
   background-color: var(--bg-color);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -213,6 +217,7 @@ h2 {
   background: radial-gradient(circle at top center, rgba(17, 17, 17, 1) 0%, rgba(5, 5, 5, 1) 100%);
   position: relative;
   overflow: hidden;
+  max-width: 100%;
 }
 
 /* Decoratives */
@@ -291,11 +296,12 @@ h2 {
   padding: 100px 0;
   background-color: var(--surface-color);
   position: relative;
+  overflow: hidden;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -360,6 +366,7 @@ h2 {
 .detailed-services-section {
   padding: 100px 0;
   background-color: var(--bg-color);
+  overflow: hidden;
 }
 
 .service-category {
@@ -459,6 +466,7 @@ h2 {
 .testimonials-section {
   padding: 80px 0;
   background-color: var(--surface-color);
+  overflow: hidden;
 }
 
 /* ABOUT SECTION */
@@ -467,6 +475,7 @@ h2 {
   background-color: var(--dark-section);
   color: var(--dark-section-text);
   position: relative;
+  overflow: hidden;
 }
 
 .about-section::before {
@@ -550,6 +559,7 @@ h2 {
   padding: 100px 0;
   background: var(--bg-color);
   position: relative;
+  overflow: hidden;
 }
 
 .quote-section::before {
@@ -637,6 +647,7 @@ h2 {
 .location-section {
   padding: 80px 0;
   background: var(--surface-color);
+  overflow: hidden;
 }
 
 .map-container {
@@ -724,19 +735,56 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  .main-header .container { flex-direction: column; gap: 1rem; }
-  .main-nav ul { gap: 1.5rem; }
-  .hero-section { padding: 160px 0 80px; }
+  /* Fix Header */
+  .main-header { padding: 0.75rem 0; }
+  .main-header .container { flex-direction: column; gap: 0.5rem; align-items: center; justify-content: center; text-align: center; }
+  .main-header .btn { display: none; } /* Ocultar botão no menu para economizar espaço vertical */
+  .main-nav { width: 100%; display: flex; justify-content: center; }
+  .main-nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; padding: 0; margin: 0; }
+  .logo { justify-content: center; font-size: 1.5rem; }
+  
+  /* Fix Hero */
+  .hero-section { padding: 120px 0 60px; }
   .hero-section h1 { font-size: 2.25rem; }
-  .quote-form { grid-template-columns: 1fr; padding: 2rem; }
+  
+  /* Reduce excessive padding on all sections */
+  .services-section, .detailed-services-section, .about-section, .quote-section, .location-section, .testimonials-section {
+    padding: 60px 0;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  /* Fix typography */
+  h2 { font-size: 2rem; }
+  
+  /* Fix Form */
+  .quote-form { grid-template-columns: 1fr; padding: 1.5rem; }
   .form-group:nth-child(3) { grid-column: auto; }
   .quote-form button { grid-column: auto; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  
+  /* Fix footer */
+  .main-footer { padding-bottom: 100px; } /* Espaço para o botão do WhatsApp */
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; width: 100%; }
+  .footer-col { display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .social-links { justify-content: center; display: flex; }
 }
 
 @media (max-width: 480px) {
   .hero-section h1 { font-size: 1.75rem; }
-  .btn-large { padding: 0.875rem 1.5rem; width: 100%; }
-  .trust-signals { flex-direction: column; align-items: center; gap: 1rem; }
-  .logo { font-size: 1.5rem; }
+  .hero-section p { font-size: 1rem; }
+  .btn-large { padding: 0.875rem 1.25rem; width: 100%; font-size: 1rem; }
+  
+  /* Fix Trust Signals */
+  .trust-signals { flex-direction: column; align-items: stretch; gap: 0.5rem; margin-top: 2rem; }
+  .trust-signals span { justify-content: center; font-size: 0.85rem; padding: 0.5rem; }
+  
+  /* Fix Services Grids */
+  .services-grid, .detailed-grid { grid-template-columns: 1fr; }
+  .service-detail-card { padding: 1.5rem; }
+  
+  /* Fix Logo */
+  .logo { font-size: 1.15rem; gap: 1px; }
+  .logo-text { font-size: 1rem; margin-left: 1px; }
+  .main-nav ul { gap: 0.75rem; }
+  .main-nav a { font-size: 0.9rem; }
 }
