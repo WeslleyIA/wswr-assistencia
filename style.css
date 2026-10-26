@@ -1962,3 +1962,172 @@ ul {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Seção Leva e Traz (100% Linear e sem Ícones Genéricos)
+   ========================================================================== */
+.trust-item-highlight {
+  border-color: rgba(34, 197, 94, 0.45) !important;
+  background: rgba(34, 197, 94, 0.1) !important;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+}
+
+.trust-item-highlight strong {
+  color: var(--brand-green-light);
+}
+
+/* Seção Leva e Traz Principal */
+.delivery-section {
+  padding: 6rem 0;
+  position: relative;
+  background: linear-gradient(180deg, #0a0b10 0%, #080a0f 50%, var(--bg-dark) 100%);
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.delivery-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+  opacity: 0.15;
+}
+
+.glow-delivery-1 {
+  top: 10%;
+  left: -150px;
+  background: var(--brand-green);
+}
+
+.glow-delivery-2 {
+  bottom: 10%;
+  right: -150px;
+  background: var(--brand-red);
+}
+
+.delivery-tag {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* Grid dos 4 Passos Totalmente Linear */
+.delivery-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 2;
+  align-items: stretch;
+}
+
+.delivery-step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  transition: var(--transition);
+  backdrop-filter: var(--glass-blur);
+}
+
+.delivery-step-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-green);
+  box-shadow: 0 15px 35px -10px rgba(34, 197, 94, 0.25);
+  background: var(--bg-card-hover);
+}
+
+.delivery-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.delivery-step-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--brand-green);
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delivery-step-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--brand-green-light);
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.delivery-step-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  min-height: 2.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.delivery-step-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.delivery-cta-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-top: 0.5rem;
+}
+
+.delivery-cta-note {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 0.9rem;
+}
+
+/* Responsividade Leva e Traz */
+@media (max-width: 1024px) {
+  .delivery-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .delivery-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .delivery-step-card {
+    padding: 1.6rem 1.4rem;
+  }
+
+  .delivery-step-title {
+    min-height: auto;
+  }
+}
+
+

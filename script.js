@@ -108,11 +108,13 @@ function initFaqAccordion() {
 function initSimulator() {
   const devicePills = document.querySelectorAll('#devicePills .pill-btn');
   const problemPills = document.querySelectorAll('#problemPills .pill-btn');
+  const deliveryPills = document.querySelectorAll('#deliveryPills .pill-btn');
   const modelInput = document.getElementById('modelInput');
   const sendBtn = document.getElementById('simulatorSendBtn');
 
   let selectedDevice = 'Celular';
   let selectedProblem = 'Troca de Tela / Visor Quebrado';
+  let selectedDelivery = 'Balcão';
 
   // Seleção de dispositivo
   devicePills.forEach(btn => {
@@ -134,6 +136,16 @@ function initSimulator() {
     });
   });
 
+  // Seleção de forma de atendimento (Leva e Traz ou Balcão)
+  deliveryPills.forEach(btn => {
+    btn.addEventListener('click', () => {
+      deliveryPills.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedDelivery = btn.getAttribute('data-delivery');
+      updateWhatsappLink();
+    });
+  });
+
   // Atualização em tempo real conforme digita o modelo
   if (modelInput) {
     modelInput.addEventListener('input', updateWhatsappLink);
@@ -150,13 +162,17 @@ function initSimulator() {
       expert = 'Weslley';
     }
 
-    const message = `Olá ${expert}! Vim pelo site da WSWR e gostaria de um orçamento para meu ${selectedDevice}${modelText}. O problema é: ${selectedProblem}.`;
+    const deliveryNote = selectedDelivery === 'Leva e Traz' 
+      ? ' Gostaria de solicitar o serviço Leva e Traz (coleta no meu endereço)!' 
+      : ' Pretendo levar até a loja física.';
+
+    const message = `Olá ${expert}! Vim pelo site da WSWR e gostaria de um orçamento para meu ${selectedDevice}${modelText}. O problema é: ${selectedProblem}.${deliveryNote}`;
     const encoded = encodeURIComponent(message);
     
     if (sendBtn) {
       sendBtn.href = `https://wa.me/${phone}?text=${encoded}`;
       sendBtn.setAttribute('data-whatsapp-track', 'simulador');
-      sendBtn.setAttribute('data-whatsapp-service', `${selectedDevice} - ${selectedProblem}`);
+      sendBtn.setAttribute('data-whatsapp-service', `${selectedDevice} - ${selectedProblem} (${selectedDelivery})`);
     }
   }
 
