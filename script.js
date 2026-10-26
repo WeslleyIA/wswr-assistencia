@@ -180,55 +180,10 @@ function initSimulator() {
   updateWhatsappLink();
 }
 
-/* ==========================================================================
-   5. Modal dos Diplomas e Certificados ETEC (Imagens Otimizadas)
-   ========================================================================== */
-function openCertificateModal(technician) {
-  const modal = document.getElementById('certificateModal');
-  const modalImg = document.getElementById('modalCertImage');
-  const modalTitle = document.getElementById('modalCertTitle');
-  const modalSubtitle = document.getElementById('modalCertSubtitle');
 
-  if (technician === 'weslley') {
-    modalImg.src = 'assets/certificado-weslley.jpg';
-    modalImg.alt = 'Diploma de Técnico em Eletrônica - Weslley Cardoso Fortunato de Souza';
-    modalTitle.textContent = 'Weslley Cardoso Fortunato de Souza';
-    modalSubtitle.textContent = 'Diploma Oficial: Técnico em Eletrônica · ETEC Euro Albino de Souza (Nº 1367501)';
-  } else {
-    modalImg.src = 'assets/certificado-werlley.jpg';
-    modalImg.alt = 'Diploma de Técnico em Eletrônica - Werlley Cardoso Fortunato de Souza';
-    modalTitle.textContent = 'Werlley Cardoso Fortunato de Souza';
-    modalSubtitle.textContent = 'Diploma Oficial: Técnico em Eletrônica · ETEC Euro Albino de Souza (Nº 1367500)';
-  }
-
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCertificateModal(event) {
-  // Se o clique foi no fundo escuro (fora do modal-content)
-  if (event.target.id === 'certificateModal') {
-    closeCertificateModalDirect();
-  }
-}
-
-function closeCertificateModalDirect() {
-  const modal = document.getElementById('certificateModal');
-  if (modal) {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-
-// Fechar modal com a tecla ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeCertificateModalDirect();
-  }
-});
 
 /* ==========================================================================
-   6. Rolagem Suave Personalizada
+   5. Rolagem Suave Personalizada
    ========================================================================== */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -253,7 +208,7 @@ function initSmoothScroll() {
 }
 
 /* ==========================================================================
-   7. Rastreamento de Cliques no WhatsApp (Google Analytics 4 / GA4)
+   6. Rastreamento de Cliques no WhatsApp (Google Analytics 4 / GA4)
    ========================================================================== */
 function trackWhatsAppClick(origin, serviceLabel) {
   const eventLabel = origin || 'geral';

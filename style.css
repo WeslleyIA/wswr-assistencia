@@ -923,7 +923,7 @@ ul {
 }
 
 /* ==========================================================================
-   Authority & Technicians Section (Diplomas ETEC)
+   Authority & Technicians Section (Formação ETEC)
    ========================================================================== */
 .authority-section {
   padding: 5rem 0;
@@ -1025,85 +1025,58 @@ ul {
   line-height: 1.6;
 }
 
-/* Certificate Box */
-.certificate-box {
-  cursor: pointer;
+/* Credencial de Formação Técnica ETEC */
+.tech-credential-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   background: rgba(14, 16, 23, 0.85);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 0.85rem;
-  transition: var(--transition);
+  padding: 1rem 1.25rem;
   margin-top: auto;
-}
-
-.cert-box-ws:hover {
-  border-color: var(--brand-green);
-  box-shadow: 0 5px 20px rgba(34, 197, 94, 0.25);
-}
-
-.cert-box-wr:hover {
-  border-color: var(--brand-red);
-  box-shadow: 0 5px 20px rgba(239, 68, 68, 0.25);
-}
-
-.cert-img-wrapper {
-  position: relative;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  height: 180px;
-  background: #000;
-}
-
-.cert-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   transition: var(--transition);
 }
 
-.certificate-box:hover .cert-img-wrapper img {
-  transform: scale(1.04);
+.credential-ws {
+  border-left: 3px solid var(--brand-green);
 }
 
-.cert-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(7, 8, 11, 0.7);
+.credential-ws:hover {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.04);
+}
+
+.credential-wr {
+  border-left: 3px solid var(--brand-red);
+}
+
+.credential-wr:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.credential-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.credential-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  opacity: 0;
-  transition: var(--transition);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #ffffff;
+  gap: 0.2rem;
 }
 
-.certificate-box:hover .cert-overlay {
-  opacity: 1;
-}
-
-.cert-zoom-icon {
-  font-size: 1.5rem;
-}
-
-.cert-meta {
-  margin-top: 0.75rem;
-}
-
-.cert-school {
-  display: block;
-  font-size: 0.82rem;
+.credential-title {
+  font-size: 0.98rem;
   font-weight: 700;
   color: #ffffff;
 }
 
-.cert-title {
-  display: block;
-  font-size: 0.76rem;
-  color: var(--text-muted);
+.credential-institution {
+  font-size: 0.82rem;
+  color: #94a3b8;
 }
 
 .company-formal-badge {
@@ -1789,91 +1762,7 @@ ul {
   border-radius: 50%;
 }
 
-/* ==========================================================================
-   Modal Diploma Lightbox
-   ========================================================================== */
-.modal-backdrop {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(8px);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 
-.modal-backdrop.open {
-  display: flex;
-  opacity: 1;
-}
-
-.modal-content {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  max-width: 900px;
-  width: 100%;
-  position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
-  animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes modalPop {
-  from { transform: scale(0.92); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.modal-close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1.25rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #ffffff;
-  font-size: 1.8rem;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.modal-close-btn:hover {
-  background: var(--brand-red);
-}
-
-.modal-cert-title {
-  font-size: 1.4rem;
-  margin-bottom: 0.25rem;
-}
-
-.modal-cert-subtitle {
-  font-size: 0.9rem;
-  color: var(--brand-green-light);
-  margin-bottom: 1.5rem;
-}
-
-.modal-img-container {
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  max-height: 70vh;
-  background: #000;
-}
-
-.modal-img-container img {
-  width: 100%;
-  height: auto;
-  max-height: 70vh;
-  object-fit: contain;
-}
 
 /* ==========================================================================
    Responsividade Mobile-First
